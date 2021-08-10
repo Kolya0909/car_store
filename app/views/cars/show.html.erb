@@ -43,9 +43,9 @@
   <%if user_signed_in? %>
     <div class="comment__tag">Залиште коментар</div>
     <%=form_for ([@car, @car.comment.build]) do |f| %>
-      <p>Ваше імя</p>
-      <%= f.text_field :username, value:"#{@user.username}", class:'form-control' %>
-      <br>
+<!--      <p>Ваше імя</p>-->
+      <%#= f.text_field :username, value:"#{@user.username}", class:'form-control' %>
+<!--      <br>-->
       <p>Напишіть коментар</p>
       <%= f.text_area :body, class:'form-control' %>
       <br>

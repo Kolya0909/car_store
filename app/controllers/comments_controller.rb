@@ -17,8 +17,10 @@ class CommentsController < ApplicationController
     redirect_to @car
   end
 
-  private def comment_params
-    params.require(:comment).permit(:username, :body)
+  private
+
+  def comment_params
+    params.require(:comment).permit(:body)
   end
 
 end
