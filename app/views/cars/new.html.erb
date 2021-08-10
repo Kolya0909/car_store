@@ -1,0 +1,55 @@
+<h3 style="text-align: center">Додайте нове оголошення продажу авто на  avtobazar</h3>
+
+
+<div class="form__inner">
+  <%= form_for([@user, @user.car.build ], url: cars_path) do |f|%>
+    <%#if @car.errors.any? %>
+      <%# @car.errors.full_messages.each do |msg| %>
+<!--        <div class="alert alert-danger"><%#= msg %></div>-->
+      <%#end%>
+    <%#end %>
+    <div class="car_photo text">Завантажте фотографію вашої авто</div>
+    <%= f.file_field( :image, class: 'file__input form-control')%>
+    <div class="car__name text">Введіть марку вашого авто</div>
+    <%= f.text_field :name , class:'form-control', placeholder: 'Opel'%>
+    <div class="car__model text">Введіть модель вашого авто</div>
+    <%= f.text_field :series , class:'form-control', placeholder: 'Astra'%>
+    <div class="car__year text">Введіть рік вашого авто</div>
+    <%= f.text_field :year , class:'form-control', placeholder:'2009'%>
+    <div class="car__price text">Введіть вартість вашого авто</div>
+    <%= f.text_field :price , class:'form-control', placeholder:'6 399 $'%>
+    <div class="car__probeg text">Введіть пробіг вашого авто в (км)</div>
+    <%= f.text_field :probeg , class:'form-control', placeholder: '247 000'%>
+    <div class="car__motor text">Введіть тип двигуна (потужність, літраж) вашого авто</div>
+    <%= f.text_field :motor , class:'form-control', placeholder: '1.6 (105 h.p. / 78 kw ) бензин'%>
+    <div class="car__kpp text">Виберіть коробку передач</div>
+    <label for="car_kpp_автомат">Автомат</label>
+    <%= f.radio_button :kpp, :Автомат , class:'form-check-input'%>
+    <label for="car_kpp_механіка">Механіка</label>
+    <%= f.radio_button :kpp, :Механіка , class:'form-check-input'%>
+    <div class="car__privod text">Виберіть привід</div>
+    <label for="car_privod_передній">Передній</label>
+    <%= f.radio_button :privod, :Передній , class:'form-check-input'%>
+    <label for="car_privod_задній">Задній</label>
+    <%= f.radio_button :privod, :Задній , class:'form-check-input'%>
+    <label for="car_privod_повний">Повний</label>
+    <%= f.radio_button :privod, :Повний, class:'form-check-input'%>
+    <div class="car__color text">Введіть колір вашого авто (eng)</div>
+    <%= f.text_field :color , class:'form-control', placeholder:'red'%>
+    <div class="car__info text">Напишіть опис вашого авто</div>
+    <%= f.text_area :info , class:'form-control', placeholder:'...'%>
+    <div class="car__stan text">Напишіть про стан вашого авто (фарбована, замінені деталі кузова і тд)</div>
+    <%= f.text_area :stan , class:'form-control', placeholder:'...'%>
+    <div class="car__city text">Введіть місто де знаходиться ваше авто</div>
+    <%= f.text_field :city , class:'form-control',placeholder:'Berlin (Germany)'%>
+    <div class="telephone__number text">Введіть ваш номер телефона</div>
+    <%= f.text_field :telephone , class:'form-control',placeholder:'+154 34 134 434 09'%>
+    <div class="button">
+      <%= f.submit "Опублікувати", class: 'btn btn-success'%>
+    </div>
+    <%if user_signed_in? %>
+
+    <%end %>
+  <%end%>
+</div>
+

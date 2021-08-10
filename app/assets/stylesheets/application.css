@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.header{
+    height: 70px;
+}
+.header__inner{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu__list li a{
+    color: #730E15 !important;
+    text-decoration: none !important;
+}
+.header__logo{
+    color: #730E15 !important;
+    font-size: 36px !important;
+    text-decoration: none;
+}
+.menu__list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+}
+.menu__list li{
+    list-style: none;
+    font-size: 20px;
+}
+.menu__list li+li{
+    margin-left: 25px;
+}
+hr{
+    margin-top: 0px;
+}
+.price{
+    font-size: 30px;
+    font-weight: 700;
+    color: #3c9806;
+}
+.probeg{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.text{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+.color-block{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.displayflex{
+    display: flex;
+    align-items: center;
+}
+.button{
+    margin: 40px 0;
+    display: flex;
+    justify-content: end;
+}
+.form__inner{
+    max-width: 768px;
+    margin: 0 auto;
+}

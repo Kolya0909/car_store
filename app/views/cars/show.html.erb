@@ -1,0 +1,62 @@
+
+<div class="car__inner">
+  <p>Зараз ви переглядате   <h3><%=@car.name%> <%=@car.series %> <%=@car.year %></h3> </p>
+
+  <p><%= image_tag(@car.image,width:600) %></p>
+  <div class="price"><%= @car.price %></div>
+  <div class="probeg"><%= @car.probeg%> пробіг</div>
+
+
+  <p>Обєм двигуна: <%= @car.motor %></p>
+  <p>Трансмісія: <b><%= @car.kpp %></b></p>
+  <p>Привід: <b><%= @car.privod %></b></p>
+  <div class="displayflex">
+    <div class="car__color">Колір авто</div>
+    <span class="color-block" style="background-color: <%=@car.color%>"></span>
+  </div>
+  <%if @car.info!='' %>
+  <p>Опис авто: <%= @car.info %></p>
+  <%end %>
+  <%if @car.stan!='' %>
+    <p>Технічний стан: <%= @car.stan %></p>
+  <%end %>
+  <p>Місто де знаходиться авто: <b><%= @car.city %></b></p>
+  <p>Номер продавця: <b style="color: orangered"><%=@car.telephone%></b></p>
+  <hr>
+  <% if @car.user_id == current_user.id || current_user.email == 'admin@ukr.net'%>
+      <%= link_to "Редагувати", edit_car_path(@car), class: 'btn btn-warning' %>
+      <%= link_to "Видалити оголошення", car_path(@car), method: :delete, class: 'btn btn-danger' %>
+      <br>
+  <%end %>
+  <div class="comments">Коментарі</div>
+  <%@car.comment.each do |comment| %>
+    <%if comment!=nil %>
+      <div class="comment__inner">
+        <div class="comment__username"><%=comment.username %></div>
+        <div class="comment__body"><%=comment.body%></div>
+      </div>
+      <%if current_user.email == 'admin@ukr.net' %>
+        <%= link_to "Видалити коментар", car_comment_path(@car,comment), method: :delete, class: 'btn btn-danger' %>
+      <%end %>
+    <%end %>
+  <%end %>
+  <%if user_signed_in? %>
+    <div class="comment__tag">Залиште коментар</div>
+    <%=form_for ([@car, @car.comment.build]) do |f| %>
+      <p>Ваше імя</p>
+      <%= f.text_field :username, value:"#{@user.username}", class:'form-control' %>
+      <br>
+      <p>Напишіть коментар</p>
+      <%= f.text_area :body, class:'form-control' %>
+      <br>
+      <%= f.submit "Опублікувати", class:'btn btn-success' %>
+      <br>
+    <%end %>
+  <%end %>
+</div>
+
+
+
+
+
+

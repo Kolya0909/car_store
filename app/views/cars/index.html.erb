@@ -1,0 +1,60 @@
+<%if @car.length==0 %>
+  <%@massage = 'Нічого не знайдено введіть коректніше!'%>
+<%end %>
+<div class="search__items">
+  <%= form_with url: "/cars", method: :get do |form| %>
+    <div class="search__title">
+      <%= form.label :query, "Пошук" %> <br>
+    </div>
+    <%= form.text_field :query, class: "form-control"%>
+    <div class="btn__search">
+      <%= form.submit "Знайти", class: "btn btn-light" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="filter__items">
+
+
+  <%= form_with  url: "/cars", method: :get do |form| %>
+    <div class="search__title">
+      <%= form.label :name, "Виберіть марку авто" %> <br>
+    </div>
+    <%= form.select :name, @array, {} ,{class: "form-select"}%>
+    <div class="btn__filter">
+      <%= form.submit "Фільтр", class: "btn btn-light" %>
+    </div>
+  <% end %>
+
+</div>
+
+<p>
+  <% @car.each do |car| %>
+    <%carinfo = car.name.to_s + ' ' + car.series.to_s + ' ' + car.year.to_s %>
+  <div class="car__items">
+    <div class="car__img">
+      <%= image_tag(car.image, width:300) %>
+    </div>
+    <div class="car__info">
+      <div class="car__title"><%=carinfo %></div>
+      <div class="block">
+        <div class="car__price">Вартість: <span><%= car.price %></span></div>
+        <div class="car__probeg">Пробіг: <span><%= car.probeg %></span> тис км.</div>
+      </div>
+      <div class="block">
+        <div class="car__city">Мфсто: <%= car.city %></div>
+        <div class="car_kpp">КПП: <%= car.kpp %></div>
+      </div>
+    </div>
+  </div>
+  <div class="info-btn">
+    <%=link_to "Детальніше про авто", car_path(car), class: 'btn btn-outline-secondary' %>
+  </div>
+  <hr>
+
+
+<% end %>
+
+</p>
+
+  <b style="color: red"><%=@massage%></b>

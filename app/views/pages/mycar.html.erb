@@ -1,0 +1,64 @@
+<%#@car = Car.all %>
+<%#@array = [] %>
+<%#@car.each do |car| %>
+  <%# if car.user_id == current_user.id.to_s%>
+    <%#@array.push(car.name) %>
+  <%#end %>
+<%# end %>
+<%#@array.to_set %>
+
+<%@user = User.find(current_user.id) %>
+<%@car = @user.car %>
+<%@array = [] %>
+<%@car.each do |car| %>
+  <%@array.push(car.name) %>
+<% end %>
+
+  <div class="filter__items">
+
+
+    <%= form_with  url: "http://127.0.0.1:3000/mycar", method: :get do |form| %>
+      <div class="search__title">
+        <%= form.label :name, "Виберіть марку авто" %> <br>
+      </div>
+      <%= form.select :name, @array, class: "form-control"%>
+      <div class="btn__filter">
+        <%= form.submit "Фільтр", class: "btn btn-light" %>
+      </div>
+    <% end %>
+    <%if (params[:name]) %>
+      <%@car = @car.filterName(params[:name]) %>
+    <%end %>
+  </div>
+  <p>
+    <%if @car!=nil %>
+  <% @car.each do |car| %>
+    <%carinfo = car.name + ' ' + car.series + ' ' + car.year %>
+  <div class="car__items">
+    <div class="car__img">
+      <%= image_tag(car.image,width:300) %>
+    </div>
+    <div class="car__info">
+      <div class="car__title"><%=carinfo %></div>
+      <div class="block">
+        <div class="car__price">Вартість: <span><%= car.price %></span></div>
+        <div class="car__probeg">Пробіг: <span><%= car.probeg %></span> тис км.</div>
+      </div>
+      <div class="block">
+        <div class="car__city">Мфсто: <%= car.city %></div>
+        <div class="car_kpp">КПП: <%= car.kpp %></div>
+      </div>
+    </div>
+  </div>
+  <div class="info-btn">
+    <%=link_to "Детальніше про авто", car_path(car), class: 'btn btn-outline-secondary' %>
+  </div>
+  <hr>
+
+<% end %>
+</p>
+  <%if @car==nil %>
+  <div>Ви ще не опубліковали оголошення!</div>
+  <div><%=link_to "Додати оголошення", new_car_path, class: 'btn btn-secondary' %></div>
+<%end %>
+<%end %>
