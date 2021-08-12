@@ -32,8 +32,8 @@
   <%@car.comment.each do |comment| %>
     <%if comment!=nil %>
       <div class="comment__inner">
-        <div class="comment__username"><%=comment.username %></div>
-        <div class="comment__body"><%=comment.body%></div>
+        <div class="comment__username"><span style="font-weight: 400">Пользователь:</span> <%=comment.username%></div>
+        <div class="comment__body">Пишет: </br><%=comment.body%></div>
       </div>
       <%if current_user.email == 'admin@ukr.net' %>
         <%= link_to "Видалити коментар", car_comment_path(@car,comment), method: :delete, class: 'btn btn-danger' %>
@@ -43,9 +43,11 @@
   <%if user_signed_in? %>
     <div class="comment__tag">Залиште коментар</div>
     <%=form_for ([@car, @car.comment.build]) do |f| %>
+<!--      <div style = 'display: none'>-->
 <!--      <p>Ваше імя</p>-->
-      <%#= f.text_field :username, value:"#{@user.username}", class:'form-control' %>
+      <%#= f.text_field :username, value:"#{@user.email}", class:'form-control' %>
 <!--      <br>-->
+<!--      </div>-->
       <p>Напишіть коментар</p>
       <%= f.text_area :body, class:'form-control' %>
       <br>
