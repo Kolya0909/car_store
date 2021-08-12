@@ -9,9 +9,10 @@ Rails.application.routes.draw do
     resources :cars
   end
 
-  
   resources :cars do
     resources :comments
   end
+  
+
 
 end
