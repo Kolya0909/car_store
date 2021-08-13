@@ -31,13 +31,19 @@
   <div class="comments">Коментарі</div>
   <%@car.comment.each do |comment| %>
     <%if comment!=nil %>
-      <div class="comment__inner">
-        <div class="comment__username"><span style="font-weight: 400">Пользователь:</span> <%=comment.username%></div>
-        <div class="comment__body">Пишет: </br><%=comment.body%></div>
+      <div class="comment__container">
+        <div class="comment__inner">
+          <div class="comment__username"><span style="font-weight: 400; font-size: 14px;">Пользователь:</span> <%=comment.username%></div>
+          <div class="comment__body"><span style="font-weight: 400; font-size: 14px; color: black">Пишет:</span> </br><%=comment.body%></div>
+          <div class="comment__date"><span style="font-weight: 400; font-size: 14px; color: black">Опубликовано: </span> <%=comment.created_at.to_formatted_s(:short)%></div>
+        </div>
+        <div class="deleted__comment">
+          <%if current_user.email == 'admin@ukr.net' %>
+            <%= link_to "Видалити коментар", car_comment_path(@car,comment), method: :delete, class: 'btn btn-danger' %>
+          <%end %>
+        </div>
       </div>
-      <%if current_user.email == 'admin@ukr.net' %>
-        <%= link_to "Видалити коментар", car_comment_path(@car,comment), method: :delete, class: 'btn btn-danger' %>
-      <%end %>
+
     <%end %>
   <%end %>
   <%if user_signed_in? %>

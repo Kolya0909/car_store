@@ -23,11 +23,11 @@
     align-items: center;
 }
 .menu__list li a{
-    color: #730E15 !important;
+    color: black !important;
     text-decoration: none !important;
 }
 .header__logo{
-    color: #730E15 !important;
+    color: black !important;
     font-size: 36px !important;
     text-decoration: none;
 }
