@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @user = current_user
     @car = Car.find(params[:car_id])
-    @comment = @car.comment.create(comment_params)
+    @comment = @car.comments.create(comment_params)
     redirect_to car_path(@car)
   end
 
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :username).with_defaults(username: current_user.email)
+    params.require(:comment).permit(:body).with_defaults(user_id: current_user.id)
   end
 
 end

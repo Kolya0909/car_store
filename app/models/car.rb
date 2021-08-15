@@ -1,6 +1,6 @@
 class Car < ApplicationRecord
   belongs_to :user
-  has_many :comment, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one_attached :image
 
   validates :name, presence: true, length:{minimum: 3}

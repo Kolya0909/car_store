@@ -29,11 +29,11 @@
       <br>
   <%end %>
   <div class="comments">Коментарі</div>
-  <%@car.comment.each do |comment| %>
+  <%@car.comments.each do |comment| %>
     <%if comment!=nil %>
       <div class="comment__container">
         <div class="comment__inner">
-          <div class="comment__username"><span style="font-weight: 400; font-size: 14px;">Пользователь:</span> <%=comment.username%></div>
+          <div class="comment__username"><span style="font-weight: 400; font-size: 14px;">Пользователь:</span> <%=comment.user.name%></div>
           <div class="comment__body"><span style="font-weight: 400; font-size: 14px; color: black">Пишет:</span> </br><%=comment.body%></div>
           <div class="comment__date"><span style="font-weight: 400; font-size: 14px; color: black">Опубликовано: </span> <%=comment.created_at.to_formatted_s(:short)%></div>
         </div>
@@ -48,7 +48,7 @@
   <%end %>
   <%if user_signed_in? %>
     <div class="comment__tag">Залиште коментар</div>
-    <%=form_for ([@car, @car.comment.build]) do |f| %>
+    <%=form_for ([@car, @car.comments.build]) do |f| %>
 <!--      <div style = 'display: none'>-->
 <!--      <p>Ваше імя</p>-->
       <%#= f.text_field :username, value:"#{@user.email}", class:'form-control' %>
