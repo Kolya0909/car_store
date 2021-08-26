@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {registrations: 'registrations'}
-  resources :users, :only => [:show, :index, :new]
+  resources :users
   root 'cars#index'
 
   get 'about' => 'pages#about'

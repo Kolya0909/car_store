@@ -50,7 +50,7 @@ class CarsController < ApplicationController
 
   def create
     @user = User.find(current_user.id)
-    @car = @user.car.create(car_params)
+    @car = @user.cars.create(car_params)
 
     if (@car.save)
       redirect_to @car

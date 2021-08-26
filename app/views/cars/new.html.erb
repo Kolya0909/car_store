@@ -2,7 +2,7 @@
 
 
 <div class="form__inner">
-  <%= form_for([@user, @user.car.build ], url: cars_path) do |f|%>
+  <%= form_for([@user, @user.cars.build ], url: cars_path) do |f|%>
     <%#if @car.errors.any? %>
       <%# @car.errors.full_messages.each do |msg| %>
 <!--        <div class="alert alert-danger"><%#= msg %></div>-->

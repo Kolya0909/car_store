@@ -1,0 +1,40 @@
+<div class="username" style="text-align: center; font-size: 24px">Пользователь <span style="color: orangered"><%= @user.name %></span></div>
+<br>
+<div class="send_massage-btn" style="width: 100%; text-align: center">
+  <%=link_to "Написать сообщение", cars_path, class:'btn btn-primary'%>
+</div>
+<br>
+
+<br>
+
+
+
+<br>
+<div class="haveCar" style="text-align: center; font-size: 24px; margin-top: 70px">Всего обявлений: <%=@user.cars.count %></div>
+<div class="showAuthorCar" style="margin-top: 20px;">
+
+  <%@user.cars.each do |car| %>
+  <%carinfo = car.name.to_s + ' ' + car.series.to_s + ' ' + car.year.to_s %>
+    <div class="car__items">
+      <div class="car__img">
+        <%= image_tag(car.image, width:300) %>
+      </div>
+      <div class="car__info">
+        <div class="car__title"><%=carinfo %></div>
+        <div class="block">
+          <div class="car__price">Вартість: <span><%= car.price %></span></div>
+          <div class="car__probeg">Пробіг: <span><%= car.probeg %></span> тис км.</div>
+        </div>
+        <div class="block">
+          <div class="car__city">Мфсто: <%= car.city %></div>
+          <div class="car_kpp">КПП: <%= car.kpp %></div>
+        </div>
+      </div>
+    </div>
+    <div class="info-btn">
+      <%=link_to "Детальніше про авто", car_path(car), class: 'btn btn-outline-secondary' %>
+    </div>
+    <hr>
+  <% end %>
+
+</div>
