@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :cars, dependent: :destroy
   has_many :comments, dependent: :destroy
   attr_writer :username
+  has_one_attached :avatar
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

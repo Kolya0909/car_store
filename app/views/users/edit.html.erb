@@ -15,6 +15,8 @@
     <br>
     <%=f.text_field :surname, class:'form-control' %>
     <br>
+    <%= f.file_field( :avatar, class: 'file__input form-control')%>
+    <br>
     <%=f.submit "Редактировать", class:"btn btn-success" %>
   <% end %>
 

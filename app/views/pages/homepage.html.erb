@@ -1,6 +1,6 @@
 <div class="home_page_user">
   <div class="top_side">
-    <div class="user_avatar"></div>
+    <div class="user_avatar" style="display: flex"><%=image_tag( @user.avatar, width:200)%></div>
     <div class="top_side-right">
       <div class="user_full_name"><%=@user.name %> <%=@user.surname %></div>
     </div>
