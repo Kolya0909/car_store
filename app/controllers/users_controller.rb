@@ -12,7 +12,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+    @car = @user.cars
+  end
 
+  def update
+    @user = User.find(params[:id])
+    @user.update(users_params)
+    redirect_to '/homepage'
+  end
 
   def create
     @user = User.create(users_params)
@@ -21,7 +30,7 @@ class UsersController < ApplicationController
   private
 
   def users_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :name, :surname)
   end
 
 end
