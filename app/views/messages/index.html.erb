@@ -1,0 +1,16 @@
+<br> <%@messageCurrentUser.each do |msg|%>
+  <hr>
+  <%=current_user.name %>
+  <%=msg.content %>
+  <%=msg.created_at %>
+  <hr>
+
+<% end %>
+<%@messageRecipientUser.each do |msg| %>
+  <hr>
+  <%=@recipientUser.name %>
+  <%=msg.content %>
+  <%=msg.created_at %>
+  <hr>
+<% end %>
+

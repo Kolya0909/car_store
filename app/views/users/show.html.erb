@@ -1,7 +1,11 @@
-<div class="username" style="text-align: center; font-size: 24px">Пользователь <span style="color: orangered"><%= @user.name %></span></div>
+<div class="user_avatar_block" style="text-align: center; margin-bottom: 25px">
+  <%= image_tag(@user.avatar, width:300) %>
+</div>
+
+<div class="username" style="text-align: center; font-size: 24px">Пользователь: <span style="color: orangered"><%= @user.name + " " + @user.surname %></span></div>
 <br>
 <div class="send_massage-btn" style="width: 100%; text-align: center">
-  <%=link_to "Написать сообщение", cars_path, class:'btn btn-primary'%>
+  <%=link_to "Написать сообщение",  new_user_message_path(@user.id), class:'btn btn-primary'%>
 </div>
 <br>
 

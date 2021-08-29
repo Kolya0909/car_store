@@ -29,10 +29,15 @@
   <%end %>
   <div class="comments">Коментарі</div>
   <%@car.comments.each do |comment| %>
+
     <%if comment!=nil %>
       <div class="comment__container">
         <div class="comment__inner">
-          <div class="comment__username"><span style="font-weight: 400; font-size: 14px; margin-right: 15px;"><%= image_tag(comment.user.avatar , width: 75) %></span><%= link_to "#{comment.user.name}", user_path(comment.user_id)%></div>
+          <%if comment.user.id == current_user.id %>
+            <div class="comment__username"><span style="font-weight: 400; font-size: 14px; margin-right: 15px;"><%= image_tag(comment.user.avatar , width: 75) %></span><%= link_to "#{comment.user.name}", '/homepage'%></div>
+          <%else %>
+            <div class="comment__username"><span style="font-weight: 400; font-size: 14px; margin-right: 15px;"><%= image_tag(comment.user.avatar , width: 75) %></span><%= link_to "#{comment.user.name}", user_path(comment.user_id)%></div>
+          <%end %>
           <div class="comment__body"><span style="font-weight: 400; font-size: 14px; color: black">Пишет:</span> </br><%=comment.body%></div>
           <div class="comment__date"><span style="font-weight: 400; font-size: 14px; color: black">Опубликовано: </span> <%=comment.created_at.to_formatted_s(:short)%></div>
         </div>
