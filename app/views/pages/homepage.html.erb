@@ -8,11 +8,11 @@
     <div class="top_side-right">
       <div class="user_full_name"><%=@user.name %> <%=@user.surname %></div>
       <br>
-      <%=link_to "Мои сообщения", mymessage_path, class: "btn btn-outline-secondary"%>
+      <%=link_to "Мої повідомлення", mymessage_path, class: "btn btn-outline-secondary"%>
     </div>
   </div>
   <div class="bottom_side" style="margin-top: 60px; text-align: right">
-    <%=link_to "Редактировать профиль", edit_user_path(@user), class: "btn btn-primary"%>
+    <%=link_to "Редагувати профіль", edit_user_path(@user), class: "btn btn-primary"%>
   </div>
   <br>
 

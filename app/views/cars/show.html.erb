@@ -48,8 +48,8 @@
               </span><%= link_to "#{comment.user.name}", user_path(comment.user_id)%>
             </div>
           <%end %>
-          <div class="comment__body"><span style="font-weight: 400; font-size: 14px; color: black">Пишет:</span> </br><%=comment.body%></div>
-          <div class="comment__date"><span style="font-weight: 400; font-size: 14px; color: black">Опубликовано: </span> <%=comment.created_at.to_formatted_s(:short)%></div>
+          <div class="comment__body"><span style="font-weight: 400; font-size: 14px; color: black">Пише:</span> </br><%=comment.body%></div>
+          <div class="comment__date"><span style="font-weight: 400; font-size: 14px; color: black">Опубліковано: </span> <%=comment.created_at.to_formatted_s(:short)%></div>
         </div>
         <div class="deleted__comment">
           <%if current_user.email == 'admin@ukr.net' %>
