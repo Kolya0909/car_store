@@ -1,16 +1,14 @@
-<br> <%@messageCurrentUser.each do |msg|%>
-  <hr>
-  <%=current_user.name %>
-  <%=msg.content %>
-  <%=msg.created_at %>
-  <hr>
+<div class="message__inner">
 
-<% end %>
-<%@messageRecipientUser.each do |msg| %>
-  <hr>
-  <%=@recipientUser.name %>
-  <%=msg.content %>
-  <%=msg.created_at %>
-  <hr>
-<% end %>
+<%@message_user.each do |msg| %>
+   <%=current_user.name = current_user.surname + " : " %>
+  <%=msg.content %> <br>
+  <% end %>
+<%@message_recipient.each do |msg| %>
+    <%=@recipient.name + @recipient.surname + " : "%>
+    <%=msg.content %> <br>
+  <% end %>
+</div>
+
+
 

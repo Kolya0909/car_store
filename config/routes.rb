@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'mycar' => 'pages#mycar'
   get 'homepage' => 'pages#homepage'
+  get 'mymessage' => 'pages#mymessage'
 
 
   resources :cars do

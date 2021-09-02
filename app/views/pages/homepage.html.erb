@@ -1,11 +1,19 @@
 <div class="home_page_user">
   <div class="top_side">
-    <div class="user_avatar" style="display: flex"><%=image_tag( @user.avatar, width:200)%></div>
+    <div class="uavatar" style="display: flex">
+      <%if @user.avatar!=nil %>
+      <%=image_tag( @user.avatar, width:200)%>
+        <%end %>
+    </div>
     <div class="top_side-right">
       <div class="user_full_name"><%=@user.name %> <%=@user.surname %></div>
+      <br>
+      <%=link_to "Мои сообщения", mymessage_path, class: "btn btn-outline-secondary"%>
     </div>
   </div>
-  <div class="bottom_side" style="margin-top: 60px; text-align: center">
+  <div class="bottom_side" style="margin-top: 60px; text-align: right">
     <%=link_to "Редактировать профиль", edit_user_path(@user), class: "btn btn-primary"%>
   </div>
+  <br>
+
 </div>

@@ -1,14 +1,14 @@
 class MessagesController < ApplicationController
 
-  $chatMessage = []
-
   def index
-    @recipientUser = User.find(params[:user_id])
-    @messageCurrentUser = Message.where(sender_id: current_user, recipient_id: @recipientUser )
-    @messageRecipientUser = Message.where(sender_id: @recipientUser, recipient_id: current_user)
-    # $chatMessage.push(@messageCurrentUser)
-    # $chatMessage.push(@messageRecipientUser)
-    # @sort = $chatMessage.sort_by  { |obj| - obj['created_at'].to_i  }
+    @recipient = User.find(params[:user_id])
+    @message = Message.all
+    @message_user = Message.where(sender_id: current_user.id, recipient_id: @recipient.id).order(created_at: :desc).reverse
+    @message_recipient = @message.where(sender_id:@recipient.id,recipient_id: current_user.id).order(created_at: :desc).reverse
+
+
+
+
   end
 
   def new

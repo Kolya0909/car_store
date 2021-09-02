@@ -1,3 +1,22 @@
 // Place all the styles related to the Message controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.message__inner{
+  border: 1px solid silver;
+  padding: 10px;
+  margin-top: 25px;
+  .message__user{
+    margin-bottom: 25px;
+    .message__user-top{
+      display: flex;
+      margin-bottom: 10px;
+      justify-content: flex-start;
+      .message__user-avatar{
+        margin-right: 10px;
+      }
+    }
+  }
+
+
+}

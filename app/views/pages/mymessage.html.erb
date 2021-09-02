@@ -1,0 +1,15 @@
+
+<h4 class="mydialog__title">Мои диалоги</h4>
+
+<%@my_dialog.each do |arr| %>
+
+  <div class="mymessage__inner">
+    <div class="mymessage__block">
+      <div class="mymessage__username"><%=link_to "#{@user.where(id: arr).take.name + @user.where(id: arr).take.surname }", user_path(arr) %> </div>
+      <div class="mymessage__button"><%=link_to "В диалог", user_messages_path(arr), class: 'btn btn-outline-dark'%></div>
+    </div>
+
+  </div>
+
+<%end %>
+
