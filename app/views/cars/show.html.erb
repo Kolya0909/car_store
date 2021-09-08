@@ -14,7 +14,7 @@
     <span class="color-block" style="background-color: <%=@car.color%>"></span>
   </div>
   <%if @car.info!='' %>
-  <p>Опис авто: <%= @car.info %></p>
+    <p>Опис авто: <%= @car.info %></p>
   <%end %>
   <%if @car.stan!='' %>
     <p>Технічний стан: <%= @car.stan %></p>
@@ -23,62 +23,20 @@
   <p>Номер продавця: <b style="color: orangered"><%=@car.telephone%></b></p>
   <hr>
   <%if @car.user.id == current_user.id%>
-  <p>Автор: <%=link_to "#{@car.user.name + @car.user.surname}",'/homepage'  %></p>
-    <%else %>
+    <p>Автор: <%=link_to "#{@car.user.name + @car.user.surname}",'/homepage'  %></p>
+  <%else %>
     <p>Автор: <%=link_to "#{@car.user.name + @car.user.surname}",user_path(@car.user_id)  %></p>
-    <%end %>
+  <%end %>
   <% if @car.user_id == current_user.id || current_user.email == 'admin@ukr.net'%>
-      <%= link_to "Редагувати", edit_car_path(@car), class: 'btn btn-warning' %>
-      <%= link_to "Видалити оголошення", car_path(@car), method: :delete, class: 'btn btn-danger' %>
-      <br>
+    <%= link_to "Редагувати", edit_car_path(@car), class: 'btn btn-warning' %>
+    <%= link_to "Видалити оголошення", car_path(@car), method: :delete, class: 'btn btn-danger' %>
+    <br>
   <%end %>
-  <div class="comments">Коментарі</div>
-  <%@car.comments.each do |comment| %>
 
-    <%if comment!=nil %>
-      <div class="comment__container">
-        <div class="comment__inner">
-          <%if comment.user.id == current_user.id && comment.user.avatar!=nil%>
-            <div class="comment__username"><span style="font-weight: 400; font-size: 14px; margin-right: 15px;"><%= image_tag(comment.user.avatar , width: 75) %></span><%= link_to "#{comment.user.name}", '/homepage'%></div>
-          <%else %>
-            <div class="comment__username"><span style="font-weight: 400; font-size: 14px; margin-right: 15px;">
-              <%if comment.user.avatar!=nil %>
-              <%= image_tag(comment.user.avatar , width: 75) %>
-                <%end %>
-              </span><%= link_to "#{comment.user.name}", user_path(comment.user_id)%>
-            </div>
-          <%end %>
-          <div class="comment__body"><span style="font-weight: 400; font-size: 14px; color: black">Пише:</span> </br><%=comment.body%></div>
-          <div class="comment__date"><span style="font-weight: 400; font-size: 14px; color: black">Опубліковано: </span> <%=comment.created_at.to_formatted_s(:short)%></div>
-        </div>
-        <div class="deleted__comment">
-          <%if current_user.email == 'admin@ukr.net' %>
-            <%= link_to "Видалити коментар", car_comment_path(@car,comment), method: :delete, class: 'btn btn-danger' %>
-          <%end %>
-        </div>
-      </div>
 
-    <%end %>
-  <%end %>
-  <%if user_signed_in? %>
-    <div class="comment__tag">Залиште коментар</div>
-    <%=form_for ([@car, @car.comments.build]) do |f| %>
-<!--      <div style = 'display: none'>-->
-<!--      <p>Ваше імя</p>-->
-      <%#= f.text_field :username, value:"#{@user.email}", class:'form-control' %>
-<!--      <br>-->
-<!--      </div>-->
-      <p>Напишіть коментар</p>
-      <%= f.text_area :body, class:'form-control' %>
-      <br>
-      <%= f.submit "Опублікувати", class:'btn btn-success' %>
-      <br>
-    <%end %>
-  <%end %>
 </div>
-
-
-
+<%=render "comments/show" %>
+<%=render "comments/new" %>
 
 
 

@@ -4,11 +4,19 @@ class CommentsController < ApplicationController
     @user = current_user
     @car = Car.find(params[:car_id])
     @comment = @car.comments.create(comment_params)
-    redirect_to car_path(@car)
+      if @comment.save
+        @comment.create
+    end
+
+  end
+
+  def new
+
   end
 
   def show
-    @comment = Comment.find(params[:id])
+    @car = Car.find(params[:car_id])
+    @comment = Comment.where(car_id: params[:id])
   end
 
   def destroy

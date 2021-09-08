@@ -1,0 +1,12 @@
+<div class="container" style="width: 1024px; margin: 0 auto">
+  <%if user_signed_in? %>
+    <div class="comment__tag">Залиште коментар</div>
+    <%=form_for ([@car, @car.comments.build]) do |f| %>
+      <p>Напишіть коментар</p>
+      <%= f.text_area :body, class:'form-control' %>
+      <br>
+      <%= f.submit "Опублікувати", class:'btn btn-success' %>
+      <br>
+    <%end %>
+  <%end %>
+</div>

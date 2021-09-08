@@ -1,0 +1,33 @@
+<div class="container" style="width: 1024px; margin: 0 auto">
+
+  <div class="comments">Коментарі</div>
+  <%@car.comments.each do |comment| %>
+    <%if comment!=nil %>
+      <div class="comment__container">
+        <div class="comment__inner">
+          <%if comment.user.id == current_user.id && comment.user.avatar!=nil%>
+            <div class="comment__username"><span style="font-weight: 400; font-size: 14px; margin-right: 15px;"><%= image_tag(comment.user.avatar , width: 75) %></span><%= link_to "#{comment.user.name}", '/homepage'%></div>
+          <%else %>
+            <div class="comment__username"><span style="font-weight: 400; font-size: 14px; margin-right: 15px;">
+              <%if comment.user.avatar!=nil %>
+              <%= image_tag(comment.user.avatar , width: 75) %>
+                <%end %>
+              </span><%= link_to "#{comment.user.name}", user_path(comment.user_id)%>
+            </div>
+          <%end %>
+          <div class="comment__body"><span style="font-weight: 400; font-size: 14px; color: black">Пише:</span> </br><%=comment.body%></div>
+          <div class="comment__date"><span style="font-weight: 400; font-size: 14px; color: black">Опубліковано: </span> <%=comment.created_at.to_formatted_s(:short)%></div>
+        </div>
+        <div class="deleted__comment">
+          <%if current_user.email == 'admin@ukr.net' %>
+            <%= link_to "Видалити коментар", car_comment_path(@car,comment), method: :delete, class: 'btn btn-danger' %>
+          <%end %>
+        </div>
+      </div>
+
+    <%end %>
+  <%end %>
+</div>
+
+
+</div>
