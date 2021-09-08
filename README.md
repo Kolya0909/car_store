@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Building web-application sales car
 
-Things you may want to cover:
+* Ruby version: 3.0.1
 
-* Ruby version
 
-* System dependencies
+* Rails version: 6.1.4.1
 
-* Configuration
 
-* Database creation
+* server - any unix os
 
-* Database initialization
 
-* How to run the test suite
+* Database postgres (req. heroku)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* App at production - https://secret-coast-47409.herokuapp.com
+  * log_in: Admin
+  
+    * email: admin@ukr.net
+    
+    * password: administrator
 
-* ...
+
