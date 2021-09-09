@@ -18,7 +18,7 @@ Building web-application sales car
   * log_in: Admin
   
     * email: admin@ukr.net
-    
+      
     * password: administrator
 
 
