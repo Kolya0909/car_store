@@ -1,4 +1,17 @@
+<%if flash!=nil%>
+<%flash.each  do |key, value| %>
+<%if key=='success'%>
+<div class="alert alert-success" role="alert">
+  <%=value%>
+</div>
+<%end%>
+<%end%>
+<%end%>
+
 <div class="home_page_user">
+
+
+
   <div class="top_side">
     <div class="uavatar" style="display: flex">
       <%if @user.avatar!=nil %>

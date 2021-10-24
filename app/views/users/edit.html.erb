@@ -2,7 +2,15 @@
 
 
 
-
+<%if flash!=nil%>
+<%flash.each  do |key, value| %>
+<%if key=='error'%>
+<div class="alert alert-warning" role="alert">
+  <%=value%>
+</div>
+<%end%>
+<%end%>
+<%end%>
 
 
 

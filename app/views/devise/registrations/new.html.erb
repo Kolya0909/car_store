@@ -8,14 +8,19 @@
       <%= f.label :name %><br />
       <%= f.text_field :name, class:'form-control'  %>
     </div>
+    <div class="field">
+      <%= f.label :surname %><br />
+      <%= f.text_field :surname, class:'form-control'  %>
+    </div>
+    <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, class:'form-control',autofocus: true, autocomplete: "email" %>
+  </div>
   <div class="field">
     <p>Загрузите свой аватар</p>
     <%= f.file_field( :avatar, class: 'file__input form-control')%>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, class:'form-control',autofocus: true, autocomplete: "email" %>
-  </div>
+  
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

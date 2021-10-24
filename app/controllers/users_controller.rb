@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @user = User.all
   end
@@ -19,8 +19,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(users_params)
-    redirect_to '/homepage'
+    if @user.update(users_params)
+      flash[:success] = 'Інформацию успішно відредаговано'
+      redirect_to '/homepage'
+    else
+      flash[:error] = "Поля і'мя та фамілія не можуть бути пустими!"
+      redirect_to edit_user_path(@user)
+    end
   end
 
   def create

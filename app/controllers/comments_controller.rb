@@ -5,7 +5,11 @@ class CommentsController < ApplicationController
     @car = Car.find(params[:car_id])
     @comment = @car.comments.create(comment_params)
       if @comment.save
-        @comment.create
+        flash[:success] = 'Коментар успішно додано'
+        redirect_to car_path(@car)
+      else
+        flash[:error] = 'Переконайтеся що поле не є пустим!'
+        redirect_to car_path(@car)
     end
 
   end

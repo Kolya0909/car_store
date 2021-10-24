@@ -36,7 +36,8 @@ class CarsController < ApplicationController
   def update
     @car = Car.find(params[:id])
     if(@car.update(car_params))
-      redirect_to @car
+      flash[:success] = 'Оголошення успішно відредаговано'
+      redirect_to car_path(@car)
     else
       flash[:error] = 'Перевірте чи немає пустого поля!'
       redirect_to edit_car_path(@car)
@@ -55,7 +56,8 @@ class CarsController < ApplicationController
     @car = @user.cars.create(car_params)
 
     if (@car.save)
-      redirect_to car_path(@car)
+      flash[:success] = 'Оголошення успішно створено'
+      redirect_to new_car_path
     else
       flash[:error] = 'Перевірте чи немає пустого поля!'
       redirect_to new_car_path

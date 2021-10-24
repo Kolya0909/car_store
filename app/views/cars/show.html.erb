@@ -1,4 +1,19 @@
 
+<%if flash!=nil%>
+<%flash.each  do |key, value| %>
+<%if key=='error'%>
+<div class="alert alert-warning" role="alert">
+  <%=value%>
+</div>
+<%else%>
+<div class="alert alert-success" role="alert">
+  <%=value%>
+</div>
+<%end%>
+<%end%>
+<%end%>
+<br>
+
 <div class="car__inner">
   <p>Зараз ви переглядате   <h3><%=@car.name%> <%=@car.series %> <%=@car.year %></h3> </p>
   <p><%= image_tag(@car.image,width:600) %></p>
@@ -35,6 +50,9 @@
 
 
 </div>
+<br>
+
+
 <%=render "comments/show" %>
 <%=render "comments/new" %>
 
