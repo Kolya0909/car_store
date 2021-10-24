@@ -23,9 +23,9 @@
   <p>Номер продавця: <b style="color: orangered"><%=@car.telephone%></b></p>
   <hr>
   <%if @car.user.id == current_user.id%>
-    <p>Автор: <%=link_to "#{@car.user.name + @car.user.surname}",'/homepage'  %></p>
+    <p>Автор: <%=link_to "#{@car.user.name}",'/homepage'  %></p>
   <%else %>
-    <p>Автор: <%=link_to "#{@car.user.name + @car.user.surname}",user_path(@car.user_id)  %></p>
+    <p>Автор: <%=link_to "#{@car.user.name}",user_path(@car.user_id)  %></p>
   <%end %>
   <% if @car.user_id == current_user.id || current_user.email == 'admin@ukr.net'%>
     <%= link_to "Редагувати", edit_car_path(@car), class: 'btn btn-warning' %>

@@ -5,6 +5,16 @@ class Car < ApplicationRecord
 
   validates :name, presence: true, length:{minimum: 3}
   validates :series, presence: true, length:{minimum:3}
+  validates :image, presence: true
+  validates :price, presence: true
+  validates :probeg, presence: true
+  validates :motor, presence: true
+  validates :privod, presence: true
+  validates :kpp, presence: true
+  validates :city, presence: true
+  validates :telephone, presence: true
+  validates :info, presence: true, length:{minimum: 10}
+  validates :stan, presence: true, length:{minimum: 5}
 
   def self.search(params)
     where("LOWER(name) LIKE ? OR LOWER(series) LIKE ? OR LOWER(city) LIKE ?", "%#{params}%" ,"%#{params}%", "%#{params}%")

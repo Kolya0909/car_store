@@ -38,7 +38,8 @@ class CarsController < ApplicationController
     if(@car.update(car_params))
       redirect_to @car
     else
-      render 'edit'
+      flash[:error] = 'Перевірте чи немає пустого поля!'
+      redirect_to edit_car_path(@car)
     end
   end
 
@@ -56,7 +57,8 @@ class CarsController < ApplicationController
     if (@car.save)
       redirect_to car_path(@car)
     else
-      render 'new'
+      flash[:error] = 'Перевірте чи немає пустого поля!'
+      redirect_to new_car_path
     end
 
 

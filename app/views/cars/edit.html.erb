@@ -1,5 +1,15 @@
 <h3 style="text-align: center">Щось помилково ввели або забули заповнити?</h3>
 
+<%if flash!=nil%>
+<%flash.each  do |key, value| %>
+<%if key=='error'%>
+<div class="alert alert-warning" role="alert">
+  <%=value%>
+</div>
+<%end%>
+<%end%>
+<%end%>
+
 
 <div class="form__inner">
   <%= form_for :car, url: car_path(@car), method: :patch do |f|%>
